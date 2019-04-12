@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="Gaming_U.Views.InputDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Gaming_U.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+  
+    <Viewbox>
+        <StackPanel Margin="15" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center">
+   
+        <TextBox Header="Name" Name="txtName" Width="250" Margin="15"/>
+        <TextBox Header="Points" Name="txtAmount" Margin="15"/>
+
+            
+        <StackPanel Orientation="Horizontal" Margin="15"
+                    HorizontalAlignment="Center" >
+            <Button Content="Edit" Name="btnInputEdit" 
+                    Margin="15" Width="70" Click="btnInputEdit_Click"
+                    />
+            <Button Content="Cancel" Name="btnInputCancel"
+                    Width="70" Margin="15" Click="btnInputCancel_Click"/>
+        </StackPanel>
+        
+    </StackPanel>
+    </Viewbox>
+</Page>

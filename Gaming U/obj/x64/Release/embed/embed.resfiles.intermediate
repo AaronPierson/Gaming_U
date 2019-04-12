@@ -1,0 +1,9 @@
+App.xbf
+Views\Calculator\CalculatorView.xbf
+Views\Inputs\ContentDialogDice.xbf
+Views\Inputs\ContentDialogNames.xbf
+Views\Inputs\ContentDialogTimer.xbf
+Views\Inputs\InputDialog.xbf
+Views\MainPage.xbf
+Views\Rules\RuleBookInfoPage.xbf
+Views\Rules\RuleBooks.xbf

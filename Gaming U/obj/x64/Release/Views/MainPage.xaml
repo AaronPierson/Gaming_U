@@ -1,0 +1,248 @@
+﻿ <Page
+    x:Class="Gaming_U.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Gaming_U"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:UI="using:Microsoft.Advertising.WinRT.UI"
+    DataContext="{Binding PlayersViewModel, 
+    RelativeSource={RelativeSource self}}"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <SolidColorBrush x:Key="AccentBrush" Color="{ThemeResource SystemAccentColor}"/>
+    </Page.Resources>
+    
+    <!--code for the top appbar-->
+    <Page.TopAppBar >
+        <CommandBar Background="{StaticResource AccentBrush}">
+            <CommandBar.SecondaryCommands>
+
+            </CommandBar.SecondaryCommands>
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <!--<AppBarButton  Name="btnStartTimer" Visibility="Collapsed" Icon="Play" Label="Start Timer" Click="btnStartTimer_Click"/>
+            <AppBarButton Name="btnStopTimer" Visibility="Collapsed" Icon="Pause" Label="Stop Timer" Click="btnStopTimer_Click"/>
+            <AppBarButton Name="btnClearTimer" Visibility="Collapsed" Icon="Clear" Label="Clear Timer" Click="btnClearTimer_Click"/>
+            <AppBarButton Name="btnTimerShow" Label="Show Timer" Click="btnTimer_Click">
+                <AppBarButton.Icon>
+                    <BitmapIcon UriSource="Assets/stopwatch.png" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarSeparator/>-->
+
+            <AppBarButton x:ConnectionId='2' Name="btnRollNumber" Label="Roll a Number" Icon="Sync"                             Visibility="Collapsed"/>
+            <AppBarButton x:ConnectionId='3' Name="btnShowRoll" Label="Roll Number"                          >
+                <AppBarButton.Icon>
+                    <BitmapIcon UriSource="Assets/perspective-dice-six-faces-four.png"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarSeparator/>
+
+            <AppBarButton x:ConnectionId='4' Name="btnGenName" Label="Gen Name" Icon="Add"                          Visibility="Collapsed"/>
+            <AppBarButton x:ConnectionId='5' Name="btnShowName" Label="Genarate Name"                          >
+                <AppBarButton.Icon>
+                    <BitmapIcon UriSource="Assets/ages.png"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+
+            <!--<AppBarButton Name="btnDiceroll" Icon="Rotate" Label="Dice" Click="btnDice_Click"/>-->
+
+        </CommandBar>
+    </Page.TopAppBar>
+    
+        <!--code fo for the bottom appbar-->
+    <Page.BottomAppBar >
+        <CommandBar Background="{StaticResource AccentBrush}" >
+
+            <CommandBar.Content>
+                <Grid/>
+            </CommandBar.Content>
+            <AppBarButton x:ConnectionId='6' Name="btnRemoveAll" Icon="Delete" Label="Reomve All"                           />
+            <AppBarButton x:ConnectionId='7' Name="btnAdd" Icon="AddFriend" Label="Add Player"                     />
+
+            <!--<AppBarToggleButton Name="btnTeams" Icon="FontColor" Label="Team Play" Click="btnTeams_Click"/>-->
+        </CommandBar>
+    </Page.BottomAppBar>
+    
+    <!--laying out the ui-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--adding a border for the timer, dice, and name gan-->
+        <Border BorderBrush="{ThemeResource ApplicationForegroundThemeBrush}" 
+                BorderThickness="5" 
+                Grid.Column="0" 
+                Grid.Row="0" 
+                Grid.ColumnSpan="3" 
+                Grid.RowSpan="1"/>
+        
+        <!--Timer controns-->
+        <!--<StackPanel Grid.Column="0" Grid.Row="0"
+            Name="stkTime"
+            HorizontalAlignment="Stretch" 
+           Margin="15" Visibility="Collapsed">
+            <TextBlock Text="Timer" />
+            <Viewbox MaxHeight="95">
+                <TextBlock Text="0:0:0"  Name="txtTimer" />
+            </Viewbox>
+
+        </StackPanel>-->
+        
+        <!--Name gen controls-->
+        <StackPanel x:ConnectionId='8' Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"
+            Name="stkNames"
+            HorizontalAlignment="Stretch" 
+            Margin="15" Visibility="Collapsed">
+            <TextBlock Text="Name Genarator" />
+            <Viewbox MaxHeight="95">
+                <TextBlock x:ConnectionId='15' Text="Hello"  Name="txtName" IsTapEnabled="True"                        />
+            </Viewbox>
+
+        </StackPanel>
+        
+        <!--Dice controls-->
+        <StackPanel x:ConnectionId='9' Name="stkRoll" Grid.Column="0" Grid.Row="0"
+                        Visibility="Collapsed" 
+                        HorizontalAlignment="Stretch" Margin="15">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Roll Number" Padding="0,0,10,0"/>
+                <TextBlock x:ConnectionId='14'  Name="txtRange"/>
+            </StackPanel>
+
+            <Viewbox MaxHeight="95">
+                <TextBlock x:ConnectionId='13' Text="0" Name="txtRoll" IsTapEnabled="True"                         />
+            </Viewbox>
+        </StackPanel>
+        
+        <!--add controls-->
+        <UI:AdControl Grid.Column="3" Grid.Row="2"  
+    ApplicationId="9n071pwsf2j5"
+    AdUnitId="1100040972"
+    HorizontalAlignment="Right"
+    Width="300" Height="600"
+    VerticalAlignment="Center"/>
+
+        <!--Player  listview-->
+        <ListView x:ConnectionId='10' Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+            Name="lstofPlayers" 
+                   Margin="25" 
+                  HorizontalContentAlignment="Center" 
+                  IsItemClickEnabled="True" 
+                
+                                                    
+                  IsRightTapEnabled="True"
+                            
+                                 
+                  ItemsSource="{Binding}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"  />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+               <!--laying out the listview-->
+                <DataTemplate x:Name="dataTemplate">
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="{StaticResource AccentBrush}" BorderThickness="5" Grid.ColumnSpan="3"/>
+
+
+                        <!--textbloxk for the players names-->
+                        <Viewbox Grid.Column="0" Stretch="Uniform" MaxHeight="250" MaxWidth="250">
+                            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Name="txtName"  
+                                   Text="{Binding Name}"
+                                   Margin="10,10,10,10"
+                                  
+                                FontWeight="SemiBold" 
+                                TextAlignment="Center" 
+                                FontSize="30" FontStyle="Oblique"
+                                    HorizontalAlignment="Center"
+                                    />
+
+                                <!--<TextBlock Name="txtID" 
+                                   Text="{Binding Id}"
+                                   Margin="0,10,10,0" Padding="10"
+                                   FontWeight="Bold" 
+                                TextAlignment="Center" 
+                                FontSize="30" FontStyle="Oblique"
+                                    HorizontalAlignment="Center"
+                                    />-->
+                            </StackPanel>
+                        </Viewbox>
+                        
+                        <!--Center Controls for the points and the buttons-->
+                        <Viewbox Grid.Column="1" Stretch="Uniform" MaxHeight="250" MaxWidth="250">
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button 
+                                    Width="40" Height="40"
+                                     Command="{Binding TakePointsCommand}"
+                                     CommandParameter="{Binding}"
+                                     Margin="10,10,10,10"
+                                     FontFamily="Segoe MDL2 Assets" Content="&#xE108;"
+                                     Background="{StaticResource AccentBrush}"/>
+
+                                <TextBlock Name="txtPoints" 
+                                   Text="{Binding Amount}"
+                                     Margin="10" Padding="10"
+                                    FontWeight="SemiBold" 
+                                    TextAlignment="Center" 
+                                    FontSize="30" 
+                                    HorizontalAlignment="Center"
+                                              />
+
+                                <Button  
+                                     Width="40" Height="40"
+                                     Command="{Binding GivePointsCommand}"
+                                     CommandParameter="{Binding}"
+                                     Margin="10,10,10,10"
+                                     FontFamily="Segoe MDL2 Assets" Content="&#xE109;"
+                                   Background="{StaticResource AccentBrush}"/>
+
+                            </StackPanel>
+                        </Viewbox>
+                        
+                        <!--The buttons to remove and clear the Points-->
+                        <Viewbox Grid.Column="2" HorizontalAlignment="Center" Stretch="Uniform" MaxHeight="200" MaxWidth="200">
+                            <StackPanel Grid.Column="2" HorizontalAlignment="Center" Orientation="Horizontal">
+                                <Button Name="btnClear" 
+                                            Grid.Column="2" 
+                                            HorizontalAlignment="Center"
+                                             FontFamily="Segoe MDL2 Assets" Content="&#xE117;"
+                                                Command="{Binding ClearPointsCommand}"
+                                                CommandParameter="{Binding}"
+                                                Margin="20"
+                                                Width="40" Height="40"
+                                            Background="{StaticResource AccentBrush}"/>
+                                <Button x:ConnectionId='12' Name="btnRemove" Grid.Column="2" HorizontalAlignment="Center"
+                                          Background="{StaticResource AccentBrush}"
+                                             FontFamily="Segoe MDL2 Assets" Content="&#xE107;"
+                                             Width="40" Height="40"
+                                                                   
+                                             Margin="20"
+                                    />
+                            </StackPanel>
+                        </Viewbox>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+    </Grid>
+</Page>
+

@@ -1,0 +1,6 @@
+MainPackage=H:\Programs\GoogleDrive\Coding\Visual Studio\C#\Gaming U\Gaming U\Gaming U\bin\ARM\Release\Upload\Gaming U_1.0.0.0_ARM.appx
+SymbolPackage=H:\Programs\GoogleDrive\Coding\Visual Studio\C#\Gaming U\Gaming U\Gaming U\bin\ARM\Release\Upload\Gaming U_1.0.0.0\Gaming U_1.0.0.0_ARM.appxsym
+ResourcePack=H:\Programs\GoogleDrive\Coding\Visual Studio\C#\Gaming U\Gaming U\Gaming U\bin\ARM\Release\Upload\Gaming U_1.0.0.0_scale-100.appx
+ResourcePack=H:\Programs\GoogleDrive\Coding\Visual Studio\C#\Gaming U\Gaming U\Gaming U\bin\ARM\Release\Upload\Gaming U_1.0.0.0_scale-125.appx
+ResourcePack=H:\Programs\GoogleDrive\Coding\Visual Studio\C#\Gaming U\Gaming U\Gaming U\bin\ARM\Release\Upload\Gaming U_1.0.0.0_scale-150.appx
+ResourcePack=H:\Programs\GoogleDrive\Coding\Visual Studio\C#\Gaming U\Gaming U\Gaming U\bin\ARM\Release\Upload\Gaming U_1.0.0.0_scale-400.appx

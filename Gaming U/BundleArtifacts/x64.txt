@@ -1,0 +1,2 @@
+MainPackage=H:\Programs\GoogleDrive\Coding\Visual Studio\C#\Gaming U\Gaming U\Gaming U\bin\x64\Release\Gaming U_1.0.0.0_x64.appx
+SymbolPackage=H:\Programs\GoogleDrive\Coding\Visual Studio\C#\Gaming U\Gaming U_1.0.0.0_Test\Gaming U_1.0.0.0_x64.appxsym
